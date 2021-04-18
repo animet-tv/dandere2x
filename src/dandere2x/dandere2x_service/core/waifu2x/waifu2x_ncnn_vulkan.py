@@ -81,7 +81,7 @@ class Waifu2xNCNNVulkan(AbstractUpscaler, Thread):
             simply renaming it as png here, then changing it to jpg (for consistency elsewhere) 
             """
 
-            output_image = output_image.replace(".jpg", ".png")
+            # output_image = output_image.replace(".jpg", ".png")
 
             # replace the exec command with the files we're concerned with
             for x in range(len(exec_command)):

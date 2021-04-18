@@ -187,12 +187,12 @@ void PFrame::match_block(int x, int y) {
     } else {
         // If the MSE found at the stationary location isn't good enough, conduct a diamond search looking
         // for the blocks match nearby.
-        Block result = DiamondSearch::diamond_search_iterative_super(*image2, *image1,
-                                                                     x * block_size, y * block_size,
-                                                                     x * block_size, y * block_size,
-                                                                     1000, block_size, step_size, max_checks);
+//        Block result = DiamondSearch::diamond_search_iterative_super(*image2, *image1,
+//                                                                     x * block_size, y * block_size,
+//                                                                     x * block_size, y * block_size,
+//                                                                     1000, block_size, step_size, max_checks);
 
-//        Block result = ExhaustiveSearch::exhaustive_search(*image2, *image1, x * block_size, y * block_size, block_size);
+        Block result = ExhaustiveSearch::exhaustive_search(*image2, *image1, x * block_size, y * block_size, block_size);
 
         double block_ssim = SSIM::ssim(*image1, *image2,
                                        result.x_start, result.y_start,

@@ -69,7 +69,7 @@ public:
                 sigsqx += pow((getLumaColor(image_A.get_color(initial_x + x, initial_y + y), color) - mx), 2);
                 sigsqy += pow((getLumaColor(image_B.get_color(variable_x + x, variable_y + y), color) - my), 2);
                 mse += pow((getLumaColor(image_A.get_color(initial_x + x, initial_y + y), color))
-                           - (getLumaColor(image_B.get_color(initial_x + x, initial_y + y), color)), 2);
+                           - (getLumaColor(image_B.get_color(variable_x + x, variable_y + y), color)), 2);
 
                 sigxy += (getLumaColor(image_A.get_color(initial_x + x, initial_y + y), color) - mx) * (getLumaColor(image_B.get_color(variable_x + x, variable_y + y), color) - my);
             }

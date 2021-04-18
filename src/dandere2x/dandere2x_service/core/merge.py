@@ -39,7 +39,7 @@ from dandere2x.dandere2x_service.dandere2x_service_context import Dandere2xServi
 from dandere2x.dandere2x_service.dandere2x_service_controller import Dandere2xController
 from dandere2x.dandere2xlib.utils.dandere2x_utils import get_lexicon_value, get_list_from_file_and_wait, wait_on_file
 from dandere2x.dandere2xlib.wrappers.ffmpeg.pipe_thread import Pipe
-from dandere2x.dandere2xlib.wrappers.frame.asyncframe import AsyncFrameRead
+from dandere2x.dandere2xlib.wrappers.frame.asyncframe import AsyncFrameRead, AsyncFrameWrite
 from dandere2x.dandere2xlib.wrappers.frame.frame import Frame
 from dandere2x.dandere2x_service.core.residual_plugins.pframe import pframe_image
 
@@ -77,14 +77,14 @@ class Merge(threading.Thread):
         # Load the genesis image + the first upscaled image.
         frame_previous = Frame()
         frame_previous.load_from_string_controller(
-            self.context.merged_dir + "merged_" + str(1) + ".jpg",
+            self.context.merged_dir + "merged_" + str(1) + ".png",
             self.controller)
 
         # Load and pipe the 'first' image before we start the for loop procedure, since all the other images will
         # inductively build off this first frame.
         frame_previous = Frame()
         frame_previous.load_from_string_controller(
-            self.context.merged_dir + "merged_" + str(1) + ".jpg", self.controller)
+            self.context.merged_dir + "merged_" + str(1) + ".png", self.controller)
         self.pipe.save(frame_previous)
 
         current_upscaled_residuals = Frame()
@@ -140,10 +140,10 @@ class Merge(threading.Thread):
 
             # Manually write the image if we're preserving frames (this is for enthusiasts / debugging).
             # if self.preserve_frames:
-            # if True:
-            #     output_file = self.context.merged_dir + "merged_" + str(x + 1) + ".jpg"
-            #     background_frame_write = AsyncFrameWrite(current_frame, output_file)
-            #     background_frame_write.start()
+            if True:
+                output_file = self.context.merged_dir + "merged_" + str(x + 1) + ".jpg"
+                background_frame_write = AsyncFrameWrite(current_frame, output_file)
+                background_frame_write.start()
 
             #######################################
             # Assign variables for next iteration #

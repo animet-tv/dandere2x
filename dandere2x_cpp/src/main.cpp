@@ -18,17 +18,17 @@ int main(int argc, char **argv) {
 //    cout << "hi" << endl;
 //    benchmark();
 ////
-    bool debug = false; //debug flag
+    bool debug = true; //debug flag
 
     //Initialize the variables needed for Dandere2x's driver. If debug = True, then we use these variables.
 
-    string workspace = "C:\\Users\\windwoz\\Desktop\\release\\workspace\\default\\";
+    string workspace = "C:\\Users\\Tyler\\Documents\\GitHub\\dandere2x\\src\\workspace\\gui\\subworkspace\\";
     int frame_count = 205;
-    int block_size = 30;
+    int block_size = 20;
     int step_size = 8;
-    string run_type = "r";// 'n' or 'r'
+    string run_type = "n";// 'n' or 'r'
     int resume_frame = 200;
-    string extension_type = ".jpg";
+    string extension_type = ".png";
 
     cout << "Dandere2x CPP vDSSIM 1.0" << endl;
 
